@@ -1,15 +1,17 @@
+from flask import Flask, request, render_template
 from googletrans import Translator
 
-def translate_text(text, target_language):
-    translator = Translator()
-    translated_text = translator.translate(text, dest=target_language)
-    return translated_text.text
+app = Flask(__name__)
 
-def main():
-    text_to_translate = input("Enter the text to translate: ")
-    target_language = input("Enter the target language (e.g. 'hindi' for HINDI): ")
-    translated_text = translate_text(text_to_translate, target_language)
-    print(f"Translated text: {translated_text}")
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    if request.method == 'POST':
+        text_to_translate = request.form['text_to_translate']
+        target_language = request.form['target_language']
+        translator = Translator()
+        translated_text = translator.translate(text_to_translate, dest=target_language)
+        return render_template('index.html', translated_text=translated_text.text)
+    return render_template('index.html')
 
-if __name__ == "__main__":
-    main()
+if __name__ == '__main__':
+    app.run(debug=True)
