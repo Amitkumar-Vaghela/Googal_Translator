@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Translation Result{% endblock %}
+
+{% block header %}Translation Result{% endblock %}
+
+{% block content %}
+{% if translated_text %}
+    <h2>Translated Text:</h2>
+    <p class="translated">{{ translated_text }}</p>
+{% else %}
+    <p>No text was translated.</p>
+{% endif %}
+<a href="{{ url_for('index') }}">Translate Another Text</a>
+{% endblock %}
