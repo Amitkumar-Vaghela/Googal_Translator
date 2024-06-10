@@ -1,0 +1,9 @@
+##Google Translate Flask App
+A simple Flask-based web application that integrates with the Google
+Translate API to translate text from one language to another.
+
+##Features
+Translate text from one language to another using the Google Translate API
+Supports multiple languages
+User-friendly interface for easy translation
+Fast and accurate translations
